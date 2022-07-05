@@ -18,7 +18,7 @@ class toDoViewSet(viewsets.ModelViewSet):
     def create(self, request): # This function is always called by POST requests.
         newToDo = toDo.objects.create(title = request.POST.get('title', ''), 
                                       description = request.POST.get('description', ''), 
-                                      user = request.user,)
+                                      user = (request.user, ''),)
 
         serialized_toDo = serializers.serialize('json', [newToDo, ]) 
         return HttpResponse(serialized_toDo, content_type ='application/json')
