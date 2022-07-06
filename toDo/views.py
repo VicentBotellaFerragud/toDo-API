@@ -22,3 +22,6 @@ class toDoViewSet(viewsets.ModelViewSet):
 
         serialized_toDo = serializers.serialize('json', [newToDo, ]) 
         return HttpResponse(serialized_toDo, content_type ='application/json')
+
+def displayBoard(request):
+    return render(request, 'toDos-board.html')
