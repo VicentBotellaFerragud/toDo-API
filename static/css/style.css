@@ -2,20 +2,6 @@
     margin: 0;
 }
 
-h1 {
-    color: red;
-}
-
-h2 {
-    color: blue;
-}
-
-
-h3 {
-    color: yellow;
-}
-
-
-h4 {
-    color: green;
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }

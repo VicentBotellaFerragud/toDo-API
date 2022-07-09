@@ -9,15 +9,19 @@
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/script.js' %}" defer></script>
 </head>
 
 <body>
 
-    <h1>This is the base.html file</h1>
+    <h1>This is the toDos board</h1>
+
+    <h2>Type a title and a description and press the "CREATE" button. By creating a new toDo you are contributing to
+        make the toDos API bigger.</h2>
 
     <div>
 
-        {% block content %} 
+        {% block content %}
         {% endblock %}
 
     </div>

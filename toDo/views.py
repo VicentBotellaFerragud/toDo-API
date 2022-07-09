@@ -3,7 +3,8 @@ from rest_framework import viewsets
 from .models import toDo
 from .serializers import toDoSerializer
 from django.core import serializers
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -24,4 +25,13 @@ class toDoViewSet(viewsets.ModelViewSet):
         return HttpResponse(serialized_toDo, content_type ='application/json')
 
 def displayBoard(request):
-    return render(request, 'toDos-board.html')
+    if request.method == 'POST' and request.POST.get('toDoTitle') != '' and request.POST.get('toDoDescription') != '':
+        title = request.POST.get('toDoTitle')
+        description = request.POST.get('toDoDescription')
+        newToDo = toDo.objects.create(title = title, description = description, user = request.user)
+        newToDoSerialized = serializers.serialize('json', [ newToDo, ])
+        return JsonResponse(newToDoSerialized[1:-1], safe = False)
+
+    toDos = toDo.objects.all()
+
+    return render(request, 'toDos-board.html', {'toDos': toDos})
