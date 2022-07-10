@@ -1,21 +1,5 @@
 {% extends "base.html" %} {% block content %}
 
-<div class="toDos-container" id="toDosContainer">
-
-    {% for toDo in toDos %}
-
-    <div class="toDo-container">
-
-        <span class="title-span"><b>{{ toDo.title }}:</b></span>
-
-        <span class="description-span"><i>{{ toDo.description }}</i></span>
-
-    </div>
-
-    {% endfor %}
-
-</div>
-
 <form class="toDo-form" onsubmit="createToDo('{{ csrf_token }}', '{{ request.user }}'); return false" method="POST">
 
     {% csrf_token %}
@@ -26,5 +10,21 @@
     <button>CREATE</button>
 
 </form>
+
+<div class="toDos-container" id="toDosContainer">
+
+    {% for toDo in toDos %}
+
+    <div class="toDo-container">
+
+        <span class="title-span"><b>{{ toDo.title }}:</b></span>
+
+        <span class="description-span">{{ toDo.description }}</span>
+
+    </div>
+
+    {% endfor %}
+
+</div>
 
 {% endblock %}

@@ -19,14 +19,16 @@ async function createToDo(token, user) {
             toDosContainer.innerHTML += `
 
                 <div class="toDo-container" id="beforeResponse">
-                    <span class="title-span" style="color: blue"><b>${titleInput.value}:</b></span>
-                    <span class="description-span"><i>${descriptionInput.value}</i></span>
+                    <span class="title-span" style="color: red"><i><b>${titleInput.value}:</b></i></span>
+                    <span class="description-span" style="color: red"><i>${descriptionInput.value}</i></span>
                 </div>
 
             `;
 
             //This is the post call.
-            let response = await fetch('/board/', {
+            let response = await fetch('/board/', { 
+                /* If I fetch 'https://vicentbotellaferragud.pythonanywhere.com/toDos/', I get the error '"toDo.user" must be a 
+                "User" instance' when sendind the POST request */
                 method: 'POST',
                 body: fd
             });
@@ -36,8 +38,8 @@ async function createToDo(token, user) {
 
             let parsedJson = JSON.parse(responseAsJson);
 
+            //This could be removed if I don't use it in the future.
             console.log(parsedJson.pk);
-
             let id = parsedJson.pk;
 
             let beforeResponse = document.getElementById('beforeResponse');
@@ -48,7 +50,7 @@ async function createToDo(token, user) {
             
                 <div class="toDo-container">
                     <span class="title-span"><b>${titleInput.value}:</b></span>
-                    <span class="description-span"><i>${descriptionInput.value}</i></span>
+                    <span class="description-span">${descriptionInput.value}</span>
                 </div>
                 
             `;
