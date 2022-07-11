@@ -26,7 +26,7 @@ async function createToDo(token, user) {
             `;
 
             //This is the post call.
-            let response = await fetch('/board/', { 
+            let response = await fetch('https://vicentbotellaferragud.pythonanywhere.com/toDos/', { 
                 /* If I fetch 'https://vicentbotellaferragud.pythonanywhere.com/toDos/', I get the error '"toDo.user" must be a 
                 "User" instance' when sendind the POST request */
                 method: 'POST',
