@@ -36,11 +36,10 @@ async function createToDo(token, user) {
             //This is the response from the backend server.
             let responseAsJson = await response.json();
 
+            /* This could be removed if I don't use it in the future.
             let parsedJson = JSON.parse(responseAsJson);
-
-            //This could be removed if I don't use it in the future.
             console.log(parsedJson.pk);
-            let id = parsedJson.pk;
+            let id = parsedJson.pk; */
 
             let beforeResponse = document.getElementById('beforeResponse');
 
