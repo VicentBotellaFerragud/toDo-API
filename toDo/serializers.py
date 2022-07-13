@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from .models import toDo
 from django.contrib.auth.models import User
+from .models import toDo
 
 # I have to define this class first so that the toDoSerializer() class can make use of it.
 class userSerializer(serializers.HyperlinkedModelSerializer): 
@@ -16,3 +16,5 @@ class toDoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = toDo
         fields = ['id','title', 'description', 'created_at', 'user', 'time_since_its_creation']
+
+# IMPORTANT! --> User is optional.
