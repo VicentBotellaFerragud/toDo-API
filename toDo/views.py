@@ -26,7 +26,7 @@ class toDoViewSet(viewsets.ModelViewSet):
         return HttpResponse(serialized_toDo, content_type ='application/json')
 
 """
-Displays the board with all toDos* and, if a POST request is made, creates a new toDo in the local database. It also returns 
+Displays the board with all toDos* and, if a POST request is made, creates a new toDo in the local database**. It also returns 
 the new toDo in json format so that it can be displayed on the board.
 """
 def displayBoard(request):
@@ -44,6 +44,8 @@ def displayBoard(request):
 
 """
 * All locally created toDos.
+
+** IMPORTANT UPDATE! --> I made some changes. The toDo is no longer created in the local database. ONLY IN THE API.
 
 IMPORTANT! --> The main difference between the functions create and displayBoard is that the first one is the one that actually
 creates the toDo in the API. The second one, apart from displaying the board, creates the toDo locally. That means, if you only had
