@@ -23,10 +23,10 @@ class toDoViewSet(viewsets.ModelViewSet):
         return HttpResponse(serialized_toDo, content_type ='application/json')
 
 def displayBoard(request):
-    title = request.POST.get('toDoTitle')
-    description = request.POST.get('toDoDescription')
+    title = request.POST.get('title')
+    description = request.POST.get('description')
     
-    if request.method == 'POST' and request.POST.get('toDoTitle') != '' and request.POST.get('toDoDescription') != '':   
+    if request.method == 'POST' and title != '' and description != '':   
         newToDo = toDo.objects.create(title = title, description = description)
         newToDoSerialized = serializers.serialize('json', [ newToDo, ])
         return JsonResponse(newToDoSerialized[1:-1], safe = False)

@@ -1,11 +1,11 @@
 {% extends "base.html" %} {% block content %}
 
-<form class="toDo-form" onsubmit="createToDo('{{ csrf_token }}', '{{ request.user }}'); return false" method="POST">
+<form class="toDo-form" onsubmit="createToDo('{{ csrf_token }}'); return false" method="POST">
 
     {% csrf_token %}
-    <input id="titleInput" type="text" name="toDoTitle" placeholder="Type the title of your toDo">
+    <input id="titleInput" type="text" name="title" placeholder="Type the title of your toDo">
 
-    <input id="descriptionInput" type="text" name="toDoDescription" placeholder="Type the description of your toDo">
+    <input id="descriptionInput" type="text" name="description" placeholder="Type the description of your toDo">
 
     <button>CREATE</button>
 

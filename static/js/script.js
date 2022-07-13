@@ -3,15 +3,15 @@ let toDosContainer = document.getElementById('toDosContainer');
 let titleInput = document.getElementById('titleInput');
 let descriptionInput = document.getElementById('descriptionInput');
 
-async function createToDo(token, user) {
+async function createToDo(token) {
 
     if (titleInput.value !== '' && descriptionInput.value !== '') {
 
         let fd = new FormData();
         /* let token = document.querySelector('[name=csrfmiddlewaretoken]').value; */ //This is another way to get the value of the token.
 
-        fd.append('toDoTitle', titleInput.value);
-        fd.append('toDoDescription', descriptionInput.value);
+        fd.append('title', titleInput.value);
+        fd.append('description', descriptionInput.value);
         fd.append('csrfmiddlewaretoken', token);
 
         try {
@@ -33,13 +33,8 @@ async function createToDo(token, user) {
                 body: fd
             });
 
-            //This is the response from the backend server.
+            //This is the response from the backend server. It could be removed in the future because if I don't really need it.
             let responseAsJson = await response.json();
-
-            /* This could be removed if I don't use it in the future.
-            let parsedJson = JSON.parse(responseAsJson);
-            console.log(parsedJson.pk);
-            let id = parsedJson.pk; */
 
             let beforeResponse = document.getElementById('beforeResponse');
 
